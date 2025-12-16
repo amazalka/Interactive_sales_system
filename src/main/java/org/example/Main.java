@@ -1,10 +1,21 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.example.util.*;
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("vbfhvfjklhjkg");
-        System.out.println("jdhkgbd");
+        OrderProcessor orderProcessor = new OrderProcessor();
+        FileHandler file = new FileHandler();
+        try {
+           List<Order> orders = file.readFile("C:\\Users\\Admin\\IdeaProjects\\Java2\\discount_day.txt");
+            List<OrderReport> orderReports = orderProcessor.sum(orders);
+           file.writeFile("C:\\Users\\Admin\\IdeaProjects\\Java2\\result.txt", orderReports);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

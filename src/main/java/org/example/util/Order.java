@@ -3,18 +3,18 @@ package org.example.util;
 import java.time.LocalDateTime;
 
 public class Order {
-    private LocalDateTime time;
-    private String name;
-    private int amountOfCement;
+    private final LocalDateTime dateTime;
+    private final String name;
+    private final int amountOfCement;
 
-    public Order(LocalDateTime time, String name, int amountOfCement) {
-        this.time = time;
+    public Order(LocalDateTime dateTime, String name, int amountOfCement) {
+        this.dateTime = dateTime;
         this.name = name;
         this.amountOfCement = amountOfCement;
     }
 
     public LocalDateTime getTime() {
-        return time;
+        return dateTime;
     }
 
     public String getName() {

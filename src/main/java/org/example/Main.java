@@ -8,14 +8,12 @@ public class Main {
 
     public static void main(String[] args) {
         OrderProcessor orderProcessor = new OrderProcessor();
-        FileHandler file = new FileHandler();
+        String path = "C:\\Users\\Admin\\IdeaProjects\\Java2\\discount_day.txt";
+        String result = "C:\\Users\\Admin\\IdeaProjects\\Java2\\result.txt";
         try {
-           List<Order> orders = file.readFile("C:\\Users\\Admin\\IdeaProjects\\Java2\\discount_day.txt");
-            List<OrderReport> orderReports = orderProcessor.sum(orders);
-           file.writeFile("C:\\Users\\Admin\\IdeaProjects\\Java2\\result.txt", orderReports);
+            orderProcessor.sum(path, 500, 5, result);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

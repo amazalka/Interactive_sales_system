@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileHandler {
-    public List<Order> readFile(String discount) throws IOException  {
+    public List<Order> readFile(String path) throws IOException {
         List<Order> orders = new ArrayList<>();
-            FileReader fileReader = new FileReader(discount);
+            FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String str;
             while (bufferedReader.ready()) {

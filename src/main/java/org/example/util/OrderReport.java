@@ -1,8 +1,8 @@
 package org.example.util;
 
 public class OrderReport {
-    private String name;
-    private double sum;
+    private final String name;
+    private final double sum;
 
     public OrderReport(String name,double sum) {
         this.name = name;

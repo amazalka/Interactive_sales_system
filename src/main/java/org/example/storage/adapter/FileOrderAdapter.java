@@ -1,26 +1,17 @@
-package org.example.storage;
+package org.example.storage.adapter;
 
-import org.example.storage.adapter.AnotherFileHandler;
 import org.example.exception.IORuntimeException;
 import org.example.model.Order;
 import org.example.model.OrderReport;
-import org.example.storage.adapter.TxtFileHandler;
-import org.example.storage.target.FileReader;
-import java.io.*;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
-public class FileHandler {
-    public List<Order> readFile(String path)  {
-        FileReader fileReader;
-        if (path.endsWith(".txt")) {
-            fileReader = new TxtFileHandler();
-        } else{
-            fileReader = new  AnotherFileHandler();
-        }
-        return fileReader.read(path);
-    }
-
-    public void writeFile(String result, List<OrderReport> orderReports) {
+public interface FileOrderAdapter {
+    List<Order> read(String file);
+    default void writeFile(String result, List<OrderReport> orderReports){
         try (FileWriter fileWriter = new FileWriter(result);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             for (OrderReport orderReport : orderReports) {

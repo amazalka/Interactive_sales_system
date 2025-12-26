@@ -9,10 +9,9 @@ public class Main {
     public static void main(String[] args) {
         String path = "C:\\Users\\Admin\\IdeaProjects\\Java2\\src\\main\\java\\org\\example\\files\\discount_day.txt";
         String result = "C:\\Users\\Admin\\IdeaProjects\\Java2\\src\\main\\java\\org\\example\\files\\result.txt";
-        FileOrderAdapterFactory file = new FileOrderAdapterFactory();
-        FileOrderAdapter fileOrder = file.getAdapter(path);
+        FileOrderAdapterFactory factory = new FileOrderAdapterFactory();
         OrderService orderService = new OrderService();
-        OrderProcessor orderProcessor = new OrderProcessor(fileOrder, orderService);
+        OrderProcessor orderProcessor = new OrderProcessor(factory, orderService);
         orderProcessor.processOrders(path, 50, 500, 5, result);
     }
 }

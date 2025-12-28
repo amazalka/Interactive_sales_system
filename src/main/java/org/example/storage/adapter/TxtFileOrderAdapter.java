@@ -1,9 +1,9 @@
 package org.example.storage.adapter;
 
-import org.example.storage.adapter.FileOrderAdapter;
 import org.example.exception.IORuntimeException;
 import org.example.model.Order;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class TxtFileOrderAdapter implements FileOrderAdapter {
     @Override
     public List<Order> read(String file) {
         List<Order> orders = new ArrayList<>();
-        try (java.io.FileReader fileReader = new java.io.FileReader(file);
+        try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String str;
             while (bufferedReader.ready()) {

@@ -45,7 +45,7 @@ class TxtFileOrderAdapterTest {
 
     @Test
     void readFileWithIncorrectContentThrowsException() throws URISyntaxException {
-        URL resourceUrl = getClass().getClassLoader().getResource("resul.txt");
+        URL resourceUrl = getClass().getClassLoader().getResource("excep.txt");
         if (resourceUrl != null) {
             Path path = Paths.get(resourceUrl.toURI());
             assertThrows(IORuntimeException.class, () -> file.read(String.valueOf(path)));

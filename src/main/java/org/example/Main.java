@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.storage.adapter.FileOrderAdapter;
 import org.example.storage.adapter.FileOrderAdapterFactory;
 import org.example.util.OrderProcessor;
 import org.example.util.OrderService;

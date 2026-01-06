@@ -12,18 +12,12 @@ import java.util.List;
 public class TxtFileOrderAdapter implements FileOrderAdapter {
     @Override
     public List<Order> read(String file) {
-        List<Order> orders = new ArrayList<>();
-        try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String str;
-            while (bufferedReader.ready()) {
-                str = bufferedReader.readLine();
-                String[] str1 = str.split("\\|");
-                LocalDateTime time = LocalDateTime.parse(str1[0]);
-                String name = str1[1];
-                int amountOfCement = Integer.parseInt(str1[2]);
-                orders.add(new Order(time, name, amountOfCement));
-            }
+        List<Order> orders;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            orders = new ArrayList<>(bufferedReader.lines()
+                    .map(s -> s.split("\\|"))
+                    .map(strings -> new Order(LocalDateTime.parse(strings[0]), strings[1], Integer.parseInt(strings[2])))
+                    .toList());
         } catch (IOException e) {
             throw new IORuntimeException("Ошибка чтения файла");
         }
